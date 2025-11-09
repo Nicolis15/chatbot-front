@@ -1,4 +1,4 @@
-import Principal from "./Screens/principal"
+import Principal from "./Screens/Principal"
 
 
 function App() {
