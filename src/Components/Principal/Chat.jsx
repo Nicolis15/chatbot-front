@@ -65,7 +65,7 @@ export default function Chat() {
 
             <div className="flex flex-col flex-1 overflow-hidden md:bg-white border-gray-300 shadow-lg md:border-2  md:mt-10 md:mb-10 md:mx-30 md:rounded-lg ">
                 <div className="absolute w-full h-1/2 bg-gradient-to-r from-primary-blue to-secundary-green [clip-path:polygon(0_0,100%_0,0_100%)] z-[-1] md:hidden" />
-                <div className="flex-1 overflow-y-auto m-5 flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-gray-100">
+                <div className="flex-1 overflow-y-auto m-5 flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-blue-400 md:scrollbar-track-gray-100 scrollbar-hidden">
                     
                     {messages.map(msg => {
                         const isUser = msg.from === "user";
@@ -77,7 +77,7 @@ export default function Chat() {
 
                                 <div className={`px-4 py-2 rounded-2xl text-sm break-words ${isUser
                                     ? "bg-primary-blue text-white rounded-br-none max-w-[80%]"
-                                    : "bg-gray-200 text-gray-800 rounded-bl-none max-w-[80%]"
+                                    : "md:bg-gray-200 bg-gray-50 text-gray-800 rounded-bl-none max-w-[80%]"
                                     }`}>
                                     <ReactMarkdown>{msg.text}</ReactMarkdown>
                                 </div>

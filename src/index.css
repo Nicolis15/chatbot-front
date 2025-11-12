@@ -6,3 +6,10 @@
   --color-primary-blue: #276174;
   --color-secundary-green: #63FD88;
 }
+
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
