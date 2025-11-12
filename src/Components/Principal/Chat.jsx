@@ -2,10 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import ChatService from '../../Services/ChatService';
 import logoPerfil from '../../assets/Perfil.jpg';
+import wallE from '../../assets/user.svg';
+
 
 export default function Chat() {
     const [messages, setMessages] = useState([
-        { id: 1, from: "bot", text: "¡Hola! Soy tu asistente virtual 🤖", avatar: logoPerfil },
+        { id: 1, from: "bot", text: "¡Hola! Soy Nicolas Lis Cruz, Desarrollador de Software e Ingeniero de Datos 🤖", avatar: logoPerfil },
     ]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
@@ -26,7 +28,7 @@ export default function Chat() {
             id: Date.now(),
             from: "user",
             text: input,
-            avatar: "https://i.pravatar.cc/40?img=5",
+            avatar: wallE,
         };
         setMessages(prev => [...prev, userMessage]);
         setInput("");
@@ -59,17 +61,18 @@ export default function Chat() {
 
     return (
         <div className="flex flex-col flex-1 relative overflow-hidden">
-            <div className="absolute w-full h-1/2 bg-gradient-to-r from-primary-blue to-secundary-green [clip-path:polygon(0_0,100%_0,0_100%)] z-[-1]" />
+            <div className="absolute w-full h-1/2 bg-gradient-to-r from-primary-blue to-secundary-green [clip-path:polygon(0_0,100%_0,0_100%)] z-[-1] " />
 
-            <div className="flex flex-col flex-1 overflow-hidden border-gray-300 shadow-lg md:border-2 bg-white md:mt-10 md:mb-10 md:mx-30 md:rounded-lg ">
-
+            <div className="flex flex-col flex-1 overflow-hidden md:bg-white border-gray-300 shadow-lg md:border-2  md:mt-10 md:mb-10 md:mx-30 md:rounded-lg ">
+                <div className="absolute w-full h-1/2 bg-gradient-to-r from-primary-blue to-secundary-green [clip-path:polygon(0_0,100%_0,0_100%)] z-[-1] md:hidden" />
                 <div className="flex-1 overflow-y-auto m-5 flex flex-col space-y-3 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-gray-100">
+                    
                     {messages.map(msg => {
                         const isUser = msg.from === "user";
                         return (
                             <div key={msg.id} className={`flex items-end ${isUser ? "justify-end" : "justify-start"}`}>
                                 {!isUser && (
-                                    <img src={msg.avatar} alt="bot" className="w-8 h-8 rounded-full mr-2 object-cover" />
+                                    <img src={msg.avatar} alt="bot" className="w-10 h-10 rounded-full mr-2 object-cover bg-primary-blue" />
                                 )}
 
                                 <div className={`px-4 py-2 rounded-2xl text-sm break-words ${isUser
@@ -80,7 +83,7 @@ export default function Chat() {
                                 </div>
 
                                 {isUser && (
-                                    <img src={msg.avatar} alt="user" className="w-8 h-8 rounded-full ml-2" />
+                                    <img src={msg.avatar} alt="user" className="w-10 h-10 rounded-full ml-2" />
                                 )}
                             </div>
                         );
@@ -105,12 +108,12 @@ export default function Chat() {
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                         placeholder="Escribe un mensaje..."
-                        className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-secundary-green"
                         disabled={isTyping}
                     />
                     <button
                         onClick={sendMessage}
-                        className="ml-2 px-4 py-2 bg-primary-blue text-white rounded-lg text-sm hover:bg-blue-600 transition"
+                        className="ml-2 px-4 py-2 bg-primary-blue text-white rounded-lg text-sm hover:bg-secundary-green transition"
                         disabled={isTyping}
                     >
                         Enviar
